@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/wallet_db
+    username: user
+    password: password
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 2000
+      min-spare: 20
+    max-connections: 2000
+    accept-count: 1000
+    connection-timeout: 20000
+
+
+
