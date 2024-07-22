@@ -46,7 +46,7 @@ public class WalletServiceImpl implements WalletService {
     @Override
     @Transactional
     public void executeOperation(WalletOperationRequest operationRequest) {
-        Wallet wallet = walletRepository.findById(operationRequest.getWalletId())
+        Wallet wallet = walletRepository.findByIdWithLock(operationRequest.getWalletId())
                                         .orElseThrow(() -> new WalletNotFoundException("Кошелек не найден"));
 
         if (operationRequest.getOperationType() == OperationType.DEPOSIT) {
